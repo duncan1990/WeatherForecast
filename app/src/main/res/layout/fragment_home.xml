@@ -2,17 +2,79 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <EditText
+        android:id="@+id/etAddCity"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:inputType="text"
+        android:background="@drawable/et_style"
+        android:padding="10dp"
+        android:maxLength="40"
+        android:hint="@string/add_city"
+        android:textColor="@color/colorBlack"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvHint"
+        android:layout_width="0dp"
+        android:paddingStart="6dp"
+        android:layout_height="wrap_content"
+        android:textAlignment="textStart"
+        android:text="*Please enter a space between words if city name is more than one word! Ex:los angeles"
+        app:layout_constraintStart_toStartOf="@id/etAddCity"
+        app:layout_constraintEnd_toEndOf="@id/etAddCity"
+        app:layout_constraintTop_toBottomOf="@id/etAddCity"
+        android:textSize="12sp"
+        android:textColor="@color/colorGrey"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAddCity"
+        style="@style/CustomButton"
+        android:layout_width="0dp"
+        android:layout_marginTop="14dp"
+        android:background="@drawable/background_blue_radius"
+        android:text="@string/add"
+        android:textAllCaps="true"
+        android:textColor="@color/colorWhite"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.98"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvHint"
+        app:layout_constraintWidth_percent="0.35" />
+
+    <TextView
+        android:id="@+id/tvHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/cities"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnAddCity" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:paddingVertical="4dp"
+        android:paddingHorizontal="14dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvHeader"
+        tools:listitem="@layout/row_city"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

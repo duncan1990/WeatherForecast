@@ -10,7 +10,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(private val repository: WeatherRepository) : ViewModel() {
+class WeatherForecastViewModel @Inject constructor(private val repository: WeatherRepository) : ViewModel() {
 
     private val _weather = MutableLiveData<WeatherResponse>().apply { postValue(WeatherResponse()) }
     val weather: LiveData<WeatherResponse> = _weather

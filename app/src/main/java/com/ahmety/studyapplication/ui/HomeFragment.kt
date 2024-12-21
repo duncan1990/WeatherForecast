@@ -5,26 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ahmety.studyapplication.databinding.FragmentHomeBinding
-import com.ahmety.studyapplication.model.WeatherResponse
-import com.ahmety.studyapplication.viewmodel.HomeViewModel
-import dagger.hilt.android.AndroidEntryPoint
+import com.ahmety.studyapplication.ui.adapter.CitySelectionAdapter
+import com.ahmety.studyapplication.utilities.hideKeyboard
 
-@AndroidEntryPoint
 class HomeFragment : Fragment() {
+    private var cityNameArrayList = arrayListOf("Dublin", "London", "Barcelona", "New York")
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: HomeViewModel by viewModels()
-
-    override fun onResume() {
-        super.onResume()
-        viewModel.loadWeather()
-    }
+    private var adapter: CitySelectionAdapter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -35,58 +27,44 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupViewModel()
-        viewModel.weather.observe(viewLifecycleOwner) { weathers ->
-            weathers
-            //adapter?.submitList(articles)
-        }
+        setAdapter()
+        initListeners()
     }
 
-    private fun setupViewModel() {
-        viewModel.weather.observe(viewLifecycleOwner, renderWeather)
-        viewModel.isViewLoading.observe(viewLifecycleOwner, isViewLoadingObserver)
-        viewModel.onMessageError.observe(viewLifecycleOwner, onMessageErrorObserver)
-        viewModel.isEmptyList.observe(viewLifecycleOwner, emptyListObserver)
-    }
-
-    private val renderWeather = Observer<WeatherResponse> {
-        /*binding.layoutError.root.visibility = View.GONE
-        binding.layoutEmpty.root.visibility = View.GONE
-        adapter?.submitList(it)*/
-    }
-
-    private val isViewLoadingObserver = Observer<Boolean> {
-        //binding.progressBar.visibility = if (it) View.VISIBLE else View.GONE
-    }
-
-    private val onMessageErrorObserver = Observer<Any> {
-        /*binding.layoutError.root.visibility = View.VISIBLE
-        binding.layoutError.textViewError.text = getString(R.string.error_text, it)*/
-    }
-
-    private val emptyListObserver = Observer<Boolean> {
-        //binding.layoutEmpty.root.visibility = if (it) View.VISIBLE else View.GONE
-    }
-
-/*    private fun setupUI() {
-        adapter = NewsAdapter { article ->
-            findNavController().navigate(
-                NewsListFragmentDirections.actionNewsListFragmentToArticleDetailFragment(article)
-            )
-        }
+    private fun setAdapter() {
+        adapter = CitySelectionAdapter(::onItemClick, ::onDeleteClick)
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = adapter
 
-        viewModel.news.observe(viewLifecycleOwner) { articles ->
-            adapter?.submitList(articles)
-        }
+        adapter?.submitList(cityNameArrayList)
+    }
 
-        setupSearch()
-    }*/
+    private fun onDeleteClick(position: Int) {
+        adapter?.notifyItemRemoved(position)
+        cityNameArrayList.removeAt(position)
+    }
+
+    private fun onItemClick(cityName: String) {
+        /*findNavController().navigate(
+            HomeFragmentDirections.actionHomeFragmentToWeatherFragment(cityName)
+        )*/
+    }
+
+    private fun initListeners() {
+        binding.apply {
+            btnAddCity.setOnClickListener {
+                cityNameArrayList.add(etAddCity.text.toString())
+                adapter?.notifyDataSetChanged()
+                etAddCity.setText("")
+                hideKeyboard(etAddCity)
+            }
+        }
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+        adapter = null
     }
 
 
