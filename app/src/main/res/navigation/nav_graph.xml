@@ -8,12 +8,12 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.ahmety.studyapplication.ui.HomeFragment"
-        android:label="HomeFragment"
-        tools:layout="@layout/fragment_home">
+        android:label="HomeFragment" >
         <action
             android:id="@+id/action_homeFragment_to_weatherForecastFragment"
             app:destination="@id/weatherForecastFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/weatherForecastFragment"
         android:name="com.ahmety.studyapplication.ui.WeatherForecastFragment"

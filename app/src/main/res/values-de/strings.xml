@@ -1,11 +1,15 @@
 <resources>
     <string name="app_name">WeatherForecastApp</string>
-    <string name="empty_list">No news found!</string>
+    <string name="empty_list">No data found!</string>
     <string name="an_error_occurred">An error occurred</string>
     <string name="error_text">Error %s</string>
     <string name="add_city">Add City From Here...</string>
     <string name="cities">Cities</string>
     <string name="add">Add</string>
     <string name="weather_forecast">Weather Forecast</string>
-    <string name="temperature_with_symbol">%s25&#176;C</string>
+    <string name="temperature_with_symbol">%s&#176;C</string>
+    <string name="city_name">City Name</string>
+    <string name="max">Max</string>
+    <string name="min">Min</string>
+    <string name="avg">Avg</string>
 </resources>

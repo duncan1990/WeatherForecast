@@ -8,6 +8,7 @@ import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 object ApiClient {
 
@@ -38,7 +39,7 @@ object ApiClient {
     }
 
     interface ServicesApiInterface {
-        @GET("/premium/v1/weather.ashx?key=${BuildConfig.API_KEY}&format=json&num_of_days=5&q=london")
-        fun getNews(): Call<WeatherResponse>
+        @GET("/premium/v1/weather.ashx?key=${BuildConfig.API_KEY}&format=json&num_of_days=5")
+        suspend fun getWeather(@Query("q") cityName: String): WeatherResponse
     }
 }

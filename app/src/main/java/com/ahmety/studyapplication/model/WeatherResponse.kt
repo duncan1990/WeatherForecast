@@ -1,11 +1,15 @@
 package com.ahmety.studyapplication.model
 
+import com.google.gson.annotations.SerializedName
+import java.io.Serial
+
 data class WeatherResponse (
     val data: Data? = null
 )
 
 data class Data (
     val weather: List<WeatherElement>? =  null,
+    @SerializedName("current_condition")
     val currentCondition: List<CurrentCondition>? = null
 )
 
@@ -20,7 +24,8 @@ data class WeatherElement (
 )
 
 data class CurrentCondition (
-    val weatherDesc: List<Weather>? = null
+    val weatherDesc: List<Weather>? = null,
+    val weatherIconUrl: List<Weather>? = null
 )
 
 data class Weather (

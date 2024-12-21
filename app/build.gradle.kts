@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.navigation.safeargs.kotlin)
     id("kotlin-kapt")
     id("dagger.hilt.android.plugin")
 }
@@ -95,13 +96,11 @@ dependencies {
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.kotlin.stdlib)
     implementation(libs.kotlinx.coroutines.core)
-    // Room
-    implementation(libs.androidx.room.runtime)
-    kapt(libs.androidx.room.compiler)
-    implementation(libs.androidx.room.ktx)
     // ViewModel
     implementation(libs.lifecycle.runtime.ktx.v262)
     implementation(libs.lifecycle.viewmodel.compose.v262)
     // Navigation
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.lottie)
+    implementation(libs.glide)
 }

@@ -5,11 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ahmety.studyapplication.databinding.FragmentHomeBinding
 import com.ahmety.studyapplication.ui.adapter.CitySelectionAdapter
 import com.ahmety.studyapplication.utilities.hideKeyboard
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
     private var cityNameArrayList = arrayListOf("Dublin", "London", "Barcelona", "New York")
@@ -45,9 +48,9 @@ class HomeFragment : Fragment() {
     }
 
     private fun onItemClick(cityName: String) {
-        /*findNavController().navigate(
-            HomeFragmentDirections.actionHomeFragmentToWeatherFragment(cityName)
-        )*/
+        findNavController().navigate(
+            HomeFragmentDirections.actionHomeFragmentToWeatherForecastFragment(cityName)
+        )
     }
 
     private fun initListeners() {
@@ -57,7 +60,17 @@ class HomeFragment : Fragment() {
                 adapter?.notifyDataSetChanged()
                 etAddCity.setText("")
                 hideKeyboard(etAddCity)
+                showAddedAnimation()
             }
+        }
+    }
+
+    private fun showAddedAnimation() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            binding.layoutSuccessfullyAdded.root.visibility = View.VISIBLE
+            binding.layoutSuccessfullyAdded.lottieAnimationView.playAnimation()
+            delay(2000)
+            binding.layoutSuccessfullyAdded.root.visibility = View.GONE
         }
     }
 

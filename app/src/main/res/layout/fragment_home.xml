@@ -77,4 +77,14 @@
         app:layout_constraintTop_toBottomOf="@+id/tvHeader"
         tools:listitem="@layout/row_city"/>
 
+    <include
+        android:id="@+id/layoutSuccessfullyAdded"
+        layout="@layout/layout_successfully_added"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="gone" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

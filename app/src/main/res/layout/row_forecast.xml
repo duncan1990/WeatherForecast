@@ -3,34 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:layout_marginBottom="10dp"
+    android:background="@drawable/background_open_blue_radius"
     android:layout_height="wrap_content">
-
-    <TextView
-        android:id="@+id/tvDate"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:textSize="20sp"
-        android:textAlignment="center"
-        android:textColor="@color/colorBlack"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="2024/02/12" />
 
     <TextView
         android:id="@+id/tvCityName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginTop="4dp"
         android:maxLength="40"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/tvMaxDegree"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvDate"
-        tools:text="San Fransiscoasdsadsadasdsadasdadasdsa" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="San Fransiscoasdsadsadasdsadasda" />
 
     <TextView
         android:id="@+id/tvMaxDegree"
@@ -58,18 +47,45 @@
         android:id="@+id/tvAvgDegree"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
         android:maxLength="5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tvMinDegree"
         tools:text="0\u00B0C" />
 
-    <View
+    <TextView
+        android:id="@+id/tvDate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="24dp"
+        android:textColor="@color/colorBlack"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/ivIcon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvCityName"
+        tools:text="2024/02/12" />
+
+    <ImageView
+        android:id="@+id/ivIcon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintBottom_toBottomOf="@id/tvDate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.92"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvDate"
+        tools:src="@drawable/ic_error" />
+
+   <!-- <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:alpha="0.5"
+        android:alpha="0.3"
         android:background="@color/colorBlack"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"/>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

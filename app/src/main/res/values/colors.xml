@@ -6,6 +6,8 @@
     <color name="colorRedBold">#F24949</color>
     <color name="colorBlack">#000000</color>
     <color name="colorWhite">#E9E3E3</color>
+    <color name="colorWhite000">#FFFFFF</color>
     <color name="colorGrey">#918b8a</color>
     <color name="colorBlue">#229bb8</color>
+    <color name="colorWhite200">#329ECEDA</color>
 </resources>
