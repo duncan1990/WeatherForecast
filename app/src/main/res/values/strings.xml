@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">WeatherForecastApp</string>
+    <string name="app_name">Weather Forecast App</string>
     <string name="empty_list">No data found!</string>
     <string name="an_error_occurred">An error occurred</string>
     <string name="error_text">Error %s</string>
@@ -12,4 +12,6 @@
     <string name="max">Max</string>
     <string name="min">Min</string>
     <string name="avg">Avg</string>
+    <string name="please_enter_space_between_city_name">*Please enter a space between words if city name is more than one word! Ex:los angeles</string>
+    <string name="please_be_sure_you_enter_a_city_name">Please be sure a city name!</string>
 </resources>

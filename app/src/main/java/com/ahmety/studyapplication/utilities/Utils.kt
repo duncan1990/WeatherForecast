@@ -2,6 +2,7 @@ package com.ahmety.studyapplication.utilities
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.text.InputFilter
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
@@ -38,4 +39,14 @@ fun ImageView.loadImages(url: String) {
         .error(R.drawable.ic_error_img)
         .into(this)
 
+}
+
+val forbiddenCharacters = listOf('!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '=', '+')
+
+val customFilter = InputFilter { source, _, _, _, _, _ ->
+    if (source.any { it.isDigit() || forbiddenCharacters.contains(it) }) {
+        ""
+    } else {
+        source
+    }
 }

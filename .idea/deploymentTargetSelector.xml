@@ -4,14 +4,17 @@
     <selectionStates>
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2024-12-21T09:17:24.179525500Z">
+        <DropdownSelection timestamp="2024-12-22T09:04:37.446265700Z">
           <Target type="DEFAULT_BOOT">
             <handle>
-              <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\msi\.android\avd\Pixel_API_29.avd" />
+              <DeviceId pluginId="PhysicalDevice" identifier="serial=RF8N50N159X" />
             </handle>
           </Target>
         </DropdownSelection>
         <DialogSelection />
+      </SelectionState>
+      <SelectionState runConfigName="addCityUpdatesRecyclerView()">
+        <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>
   </component>

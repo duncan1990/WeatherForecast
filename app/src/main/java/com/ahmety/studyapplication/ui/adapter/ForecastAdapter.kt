@@ -51,7 +51,7 @@ class ForecastAdapter(
         return super.getItemCount() + 1
     }
 
-    class HeaderViewHolder(private val binding: LayoutHeaderBinding) : RecyclerView.ViewHolder(binding.root) {
+    class HeaderViewHolder(binding: LayoutHeaderBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind() {
         }
     }

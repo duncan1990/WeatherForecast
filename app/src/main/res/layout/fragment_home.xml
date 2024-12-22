@@ -29,7 +29,7 @@
         android:paddingStart="6dp"
         android:layout_height="wrap_content"
         android:textAlignment="textStart"
-        android:text="*Please enter a space between words if city name is more than one word! Ex:los angeles"
+        android:text="@string/please_enter_space_between_city_name"
         app:layout_constraintStart_toStartOf="@id/etAddCity"
         app:layout_constraintEnd_toEndOf="@id/etAddCity"
         app:layout_constraintTop_toBottomOf="@id/etAddCity"
@@ -80,6 +80,16 @@
     <include
         android:id="@+id/layoutSuccessfullyAdded"
         layout="@layout/layout_successfully_added"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="gone" />
+
+    <include
+        android:id="@+id/layoutErrorAdding"
+        layout="@layout/layout_error_adding"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
