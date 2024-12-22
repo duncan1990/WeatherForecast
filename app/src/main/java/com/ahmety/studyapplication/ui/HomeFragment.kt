@@ -1,13 +1,12 @@
 package com.ahmety.studyapplication.ui
 
 import android.os.Bundle
-import android.text.InputFilter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
-import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,15 +14,15 @@ import com.ahmety.studyapplication.databinding.FragmentHomeBinding
 import com.ahmety.studyapplication.ui.adapter.CitySelectionAdapter
 import com.ahmety.studyapplication.utilities.customFilter
 import com.ahmety.studyapplication.utilities.hideKeyboard
+import com.ahmety.studyapplication.viewmodel.HomeFragmentViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
-    private var cityNameArrayList = arrayListOf("Dublin", "London", "Barcelona", "New York")
-
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private var adapter: CitySelectionAdapter? = null
+    private val viewModel: HomeFragmentViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -42,12 +41,12 @@ class HomeFragment : Fragment() {
         adapter = CitySelectionAdapter(::onItemClick, ::onDeleteClick)
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = adapter
-        adapter?.submitList(cityNameArrayList)
+        adapter?.submitList(viewModel.cityNameArrayList)
     }
 
     private fun onDeleteClick(position: Int) {
         adapter?.notifyItemRemoved(position)
-        cityNameArrayList.removeAt(position)
+        viewModel.cityNameArrayList.removeAt(position)
     }
 
     private fun onItemClick(cityName: String) {
@@ -60,8 +59,8 @@ class HomeFragment : Fragment() {
         binding.apply {
             btnAddCity.setOnClickListener {
                 if (etAddCity.text.toString().isNotEmpty()){
-                    cityNameArrayList.add(etAddCity.text.toString())
-                    adapter?.notifyItemChanged(cityNameArrayList.lastIndex-1)
+                    viewModel.cityNameArrayList.add(etAddCity.text.toString())
+                    adapter?.notifyItemChanged(viewModel.cityNameArrayList.lastIndex-1)
                     etAddCity.setText("")
                     hideKeyboard(etAddCity)
                     showAddedCityAnimation()

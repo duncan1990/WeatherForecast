@@ -1,7 +1,6 @@
 package com.ahmety.studyapplication.model
 
 import com.google.gson.annotations.SerializedName
-import java.io.Serial
 
 data class WeatherResponse (
     val data: Data? = null

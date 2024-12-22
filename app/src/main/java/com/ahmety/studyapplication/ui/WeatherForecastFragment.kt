@@ -1,6 +1,6 @@
 package com.ahmety.studyapplication.ui
 
-import com.ahmety.studyapplication.viewmodel.WeatherForecastViewModel
+import com.ahmety.studyapplication.viewmodel.WeatherForecastFragmentViewModel
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -19,7 +19,7 @@ class WeatherForecastFragment : Fragment() {
 
     private var _binding: FragmentWeatherForecastBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: WeatherForecastViewModel by viewModels()
+    private val viewModel: WeatherForecastFragmentViewModel by viewModels()
     private var adapter: ForecastAdapter? = null
     private val args: WeatherForecastFragmentArgs by navArgs()
 
